@@ -7,13 +7,12 @@ weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     const location = search.value
-    const url = 'http://localhost:3000/weather?address=' + location
 
     messageOne.style.color = 'black'
     messageOne.textContent = "Loading..."
     messageTwo.textContent = ""
 
-    fetch(url).then((response) => {
+    fetch('/weather?address=' + location).then((response) => {
     response.json().then((data) => {
         if(data.error){
             messageOne.style.color = '#7e1a1a'
